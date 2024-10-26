@@ -41,8 +41,6 @@ menuBar.addEventListener("click", () => {
 const tags = document.querySelectorAll('ul li');
 const allTag = 2;
 
-console.log(tags);
-
 tags.forEach(element => {
   
        element.addEventListener('click', ()=>{

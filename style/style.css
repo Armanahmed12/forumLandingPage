@@ -37,6 +37,57 @@ ul li :hover{
   
 }
 
+/* discussion section */
+
+#discussionsContainer > div {
+
+    gap: 1rem;
+    text-align: left;
+    background-color: #80808029;
+    border-radius: 0.5rem;
+    border: 2px solid #8080806d;
+}
+
+#imgContainer > img{
+
+    width: 110px !important;
+    height: 70px;
+    border-radius: 0.6rem;
+    
+}
+
+#imgContainer span{
+
+      border: 2px solid #ffffff;
+      display: inline-block;
+      width: 14px;height: 14px;
+      border-radius: 100%;
+      position: absolute;
+      top: -5px;
+      right: -5px;
+}
+
+#markedDiscussionsContainer{
+    
+    text-align: left;
+    background-color: #80808029;
+    border-radius: 0.5rem;
+    border: 2px solid #8080806d;
+    
+}
+
+
+/* border-b border-dashed border-gray-500" */
+
+#discussionsContainer hr{
+
+      border: none;
+      border-bottom: 0;
+      border-bottom: 3px dashed #808080b9;
+      margin: 0.6rem 0;
+ 
+}
+
 
 
 /* ========================== jQuary ====================== */
