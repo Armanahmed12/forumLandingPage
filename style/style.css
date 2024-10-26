@@ -1,0 +1,63 @@
+
+/* common style */
+.btnStyle {
+  background-color: #797DFC;
+  border-radius: 1.4rem;
+  color: white;
+  font-weight: 500;
+}
+
+
+/* nav and banner section */
+#bannerSection, nav {
+
+    margin: 0 2rem;
+}
+
+ul li a{
+
+     background-color: rgba(171, 159, 159, 0.145);
+     padding: 0.6rem;
+     border-radius: 100%;
+     color: gray;
+     border: 0.7px solid rgba(168, 158, 158, 0.245);
+}
+
+ul li :hover{
+
+     background-color: #7ffaffa6;
+}
+
+#bannerSection {
+ 
+  background-color: #12132D;
+  background-image: url("../images/bgbanner.png");
+  background-size: 100% 100%;
+  
+  
+}
+
+
+
+/* ========================== jQuary ====================== */
+
+/* nav */
+
+@media only screen and (max-width: 639px) {
+  body {
+    padding: 0 !important;
+  }
+  #bannerSection, nav {
+
+    margin: 0;
+}
+ 
+  nav ul li {
+    width: 100%;
+    padding: 1.5rem 0;
+    text-align: center;
+  }
+  nav ul li:hover {
+    background-color: #f0cbcb;
+  }
+}
