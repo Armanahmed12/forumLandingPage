@@ -76,7 +76,7 @@ searchBtn.addEventListener("click", () => {
       inputField.value.toLowerCase()
   );
 
-  if (matchedData.length) {
+  if (matchedData.length >= 1) {
     // showSpinner for 2s before the data is displayed
     discussionsContainer.innerHTML = '';
     const div = document.createElement("div");
