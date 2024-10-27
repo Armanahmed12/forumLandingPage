@@ -91,12 +91,15 @@ searchBtn.addEventListener("click", () => {
   
   if(['coding', 'comedy', 'music'].includes(userGivenCategory)){
    
-    console.log(userGivenCategory);
+    // Going to a specific point below by clicking in order to witness Data loading based on Category
+    document.getElementById("discussionSection").scrollIntoView({ behavior: "smooth" });
+
+     console.log(userGivenCategory);
      getDataBasedOnCategory(userGivenCategory);
 
   }else {
 
-      alert("Unknown Category, please write Comedy/Music/Coding.");
+      alert("Unknown Category, pleasE write Comedy/Music/Coding.");
   }
 
 });
