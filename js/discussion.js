@@ -22,7 +22,7 @@ const searchBtn = document.getElementById("searchBtn");
 
 // Showing all discussion posts in the screen
 function showDataOnScreen(data) {
-  console.log(data);
+
   discussionsContainer.innerHTML = "";
   data.forEach((eachPostInfo) => {
     const {
