@@ -70,18 +70,32 @@ function showDataOnScreen(data) {
 
 // show data based on category
 searchBtn.addEventListener("click", () => {
-  // showDataOnScreen(existedAllData);
-
   const matchedData = existedAllData.filter(
-    (eachDiscussionInfo) => (eachDiscussionInfo.category).toLowerCase() == (inputField.value).toLowerCase()
+    (eachDiscussionInfo) =>
+      eachDiscussionInfo.category.toLowerCase() ==
+      inputField.value.toLowerCase()
   );
-  if(matchedData.length){
+
+  if (matchedData.length) {
+    // showSpinner for 2s before the data is displayed
+    discussionsContainer.innerHTML = '';
+    const div = document.createElement("div");
+    div.innerHTML = `
+<span class="loading loading-bars loading-xs"></span>
+<span class="loading loading-bars loading-sm"></span>
+<span class="loading loading-bars loading-md"></span>
+<span class="loading loading-bars loading-lg"></span>`;
+discussionsContainer.appendChild(div);
+   // for being late
+   setTimeout(() => {
+    
     showDataOnScreen(matchedData);
     inputField.value = "";
-  }else{
 
-     alert("Unknown Category, please write Comedy/Music/Coding.")
+   }, 1000); 
 
+  } else {
+    alert("Unknown Category, please write Comedy/Music/Coding.");
   }
 });
 
@@ -104,6 +118,6 @@ function addDiscussion(selectedPostId) {
             </div>`;
   markedDiscussionsContainerTag.appendChild(div);
   // increasing the quantity of marked discussions Number
-  const markedQuantityTag =  document.getElementById('markedDiscussionNum');
-  markedQuantityTag.innerText = parseInt(markedQuantityTag.innerText) + 1; 
+  const markedQuantityTag = document.getElementById("markedDiscussionNum");
+  markedQuantityTag.innerText = parseInt(markedQuantityTag.innerText) + 1;
 }
