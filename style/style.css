@@ -48,10 +48,10 @@ ul li :hover{
     border: 2px solid #8080806d;
 }
 
-#imgContainer > img{
+#imgContainer {
 
-    width: 110px !important;
-    height: 70px;
+    width: 70px !important;
+    height: 70px !important;
     border-radius: 0.6rem;
     
 }
