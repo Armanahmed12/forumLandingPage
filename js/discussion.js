@@ -94,8 +94,6 @@ discussionsContainer.appendChild(div);
 
    }, 1000); 
 
-  } else {
-    alert("Unknown Category, please write Comedy/Music/Coding.");
   }
 });
 
