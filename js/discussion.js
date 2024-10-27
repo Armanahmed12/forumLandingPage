@@ -69,39 +69,63 @@ function showDataOnScreen(data) {
 }
 
 // show data based on category
-searchBtn.addEventListener("click", () => {
-  const matchedData = existedAllData.filter(
-    (eachDiscussionInfo) =>
-      eachDiscussionInfo.category.toLowerCase() ==
-      inputField.value.toLowerCase()
-  );
 
-  if (matchedData.length >= 1) {
-    // showSpinner for 2s before the data is displayed
-    discussionsContainer.innerHTML = '';
-    const div = document.createElement("div");
-    div.innerHTML = `
-<span class="loading loading-bars loading-xs"></span>
-<span class="loading loading-bars loading-sm"></span>
-<span class="loading loading-bars loading-md"></span>
-<span class="loading loading-bars loading-lg"></span>`;
-discussionsContainer.appendChild(div);
-   // for being late
-   setTimeout(() => {
-    
-    showDataOnScreen(matchedData);
-    inputField.value = "";
-
-   }, 1000); 
-
+async function getDataBasedOnCategory(categoryName) {
+  try {
+    const response = await fetch(
+      `https://openapi.programming-hero.com/api/retro-forum/posts?category=${categoryName}`
+    );
+     const data = await response.json();
+     console.log(data, 'categoryDataFetching by', categoryName);
+     showCategoryBasedData(data.posts);
+  } catch (error) {
+    console.error("Fetch error:", error);
   }
+}
+
+searchBtn.addEventListener("click", () => {
+ 
+  const userGivenCategory = (inputField.value).toLowerCase();
+
+  if(['coding', 'comedy', 'music'].includes(userGivenCategory)){
+   
+     getDataBasedOnCategory(userGivenCategory);
+
+  }else {
+
+      alert("Unknown Category, please write Comedy/Music/Coding.");
+  }
+
 });
+
+// CategoryBased Data show on Screen
+const showCategoryBasedData = (categoryData) =>{
+
+  console.log(categoryData, 'showCategoryBasedData sec');
+     // showSpinner for 2s before the data is displayed
+discussionsContainer.innerHTML = '';
+const div = document.createElement("div");
+div.innerHTML = `
+ <span class="loading loading-bars loading-xs"></span>
+ <span class="loading loading-bars loading-sm"></span>
+ <span class="loading loading-bars loading-md"></span>
+ <span class="loading loading-bars loading-lg"></span>`;
+discussionsContainer.appendChild(div);
+// for being late
+setTimeout(() => {
+
+showDataOnScreen(categoryData);
+inputField.value = "";
+
+}, 1000); 
+      
+}
 
 // Click to the "mark-icon" button to save the discussion
 const markedDiscussionsContainerTag = document.getElementById(
-  "markedDiscussionsContainer"
-);
+  "markedDiscussionsContainer");
 function addDiscussion(selectedPostId) {
+
   const matchedData = existedAllData.find(
     (eachPostInfo) => eachPostInfo.id == selectedPostId
   );
@@ -115,9 +139,8 @@ function addDiscussion(selectedPostId) {
               <p><i class="fa-solid fa-eye mr-2 ml-7 inline"></i>${matchedData.view_count}</p>
             </div>`;
   markedDiscussionsContainerTag.appendChild(div);
+
   // increasing the quantity of marked discussions Number
   const markedQuantityTag = document.getElementById("markedDiscussionNum");
   markedQuantityTag.innerText = parseInt(markedQuantityTag.innerText) + 1;
 }
-
-console.log(existedAllData);
