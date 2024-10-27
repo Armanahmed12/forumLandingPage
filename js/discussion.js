@@ -85,10 +85,13 @@ async function getDataBasedOnCategory(categoryName) {
 
 searchBtn.addEventListener("click", () => {
  
-  const userGivenCategory = (inputField.value).toLowerCase();
-
+  const userGivenCategory = (inputField.value).toLowerCase().trim();
+  const x = ['coding', 'comedy', 'music'].includes(userGivenCategory);
+  console.log(x);
+  
   if(['coding', 'comedy', 'music'].includes(userGivenCategory)){
    
+    console.log(userGivenCategory);
      getDataBasedOnCategory(userGivenCategory);
 
   }else {
