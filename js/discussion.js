@@ -121,3 +121,5 @@ function addDiscussion(selectedPostId) {
   const markedQuantityTag = document.getElementById("markedDiscussionNum");
   markedQuantityTag.innerText = parseInt(markedQuantityTag.innerText) + 1;
 }
+
+console.log(existedAllData);
